@@ -1,0 +1,43 @@
+<div class=" col-md-6 col-md-offset-3 login-register padd">
+	<div class="card">
+		<div class="card-header">Register</div>
+		<div class="card-block">
+			<div class="col-md-12">
+				<form data-ng-submit="submit()" name="register" novalidate>
+
+					<div class="form-group"
+						 data-ng-class="{ 'has-error': register.name.$invalid && register.name.$dirty }">
+						<label for="name">Name:</label> <input type="text" required
+							class="form-control" data-ng-model="user.name" id="name" name="name">
+					</div>
+
+					<div class="form-group"
+						 data-ng-class="{ 'has-error': register.username.$invalid && register.username.$dirty }">
+						<label for="username">Username:</label> <input type="text"
+							required class="form-control" data-ng-model="user.username" id="username" name="username">
+					</div>
+
+					<div class="form-group"
+						 data-ng-class="{ 'has-error': register.password.$invalid && register.password.$dirty }">
+						<label for="pwd">Password:</label> <input type="password" required
+							class="form-control" id="pwd" data-ng-model="user.password" name="password">
+					</div>
+
+					<div class="form-group"
+						 data-ng-class="{ 'has-error': register.confirmPassword.$invalid && register.confirmPassword.$dirty }">
+						<label for="cpwd">Confirm Password:</label> <input type="password"
+							name="confirmPassword" required class="form-control" id="cpwd" data-ng-model="confirmPassword">
+					</div>
+
+					<div class="alert alert-warning margin-top-5"
+						 data-ng-show="confirmPassword != user.password ">Password Not Matching</div>
+
+					<button type="submit" class="btn btn-secondary"
+							data-ng-disabled="register.$invalid || (confirmPassword != user.password)">Register</button>
+					<button class="btn btn-secondary" data-ui-sref="login">Login</button>
+					<div class="alert alert-info margin-top-5" data-ng-show="message">{{message}}</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

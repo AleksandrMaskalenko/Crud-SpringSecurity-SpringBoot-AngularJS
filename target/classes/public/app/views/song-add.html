@@ -1,0 +1,71 @@
+<div>
+    <div class="alert alert-info margin-top-5 col-sm-3 message " data-ng-show="message">{{message}}</div>
+
+    <div class="col-sm-6 centre">
+        <div class="card">
+            <div class="card-header">Add song</div>
+            <div class="card-block">
+                <div class="col-md-12">
+                    <form data-ng-submit="addSong()" name="songAddForm" id="songAddForm" novalidate>
+
+                        <div class="form-group" data-ng-class="{ 'has-error': songAddForm.author.$invalid && songAddForm.author.$dirty }">
+                            <label for="state-list-filter">Author:</label>
+
+                            <select required class="select select--filter form-control" id="state-list-filter" data-ng-model="song.author"
+                                    data-ng-options="author.name for author in authors" name="author">
+                            </select>
+
+                        </div>
+
+                        <button type="button" class="btn btn-info btn-sm" data-ng-click="createAuthor()">Create author</button>
+
+                        <div data-ng-show="addAuthor">
+                                <input type="text" data-ng-model="author.name">
+                                <button class="btn btn-secondary btn-sm" data-ng-click="create()" type="button">create</button>
+                        </div>
+
+
+                        <div class="form-group" data-ng-class="{ 'has-error': songAddForm.name.$invalid && songAddForm.name.$dirty }">
+                            <label for="name">Name:</label>
+                            <input type="text" required class="form-control" data-ng-model="song.name" id="name" name="name">
+                        </div>
+
+
+
+                        <div class="form-group" data-ng-class="{ 'has-error': songAddForm.duration.$invalid && songAddForm.duration.$dirty }">
+                            <label for="duration">Duration:</label>
+                            <input type="text" required class="form-control" data-ng-model="song.duration" id="duration" name="duration">
+                        </div>
+
+                        <div class="form-group" data-ng-class="{ 'has-error': songAddForm.date.$invalid && songAddForm.date.$dirty }">
+                            <label for="date">Date:</label>
+                            <input type="text" required class="form-control" data-ng-model="song.date" id="date" name="date">
+                        </div>
+
+                        <div class="form-group" data-ng-class="{ 'has-error': songAddForm.album.$invalid && songAddForm.album.$dirty }">
+                            <label for="album">Album:</label>
+                            <input type="text" required class="form-control" data-ng-model="song.album" id="album" name="album">
+                        </div>
+
+                    </form>
+
+                    <div>
+                        <form id="form" target="hiddenFrame" method="post" action="/upload" enctype="multipart/form-data" name="form">
+                            <input type="file" accept="audio/*" name="file" class="form-control-file" aria-describedby="fileHelp" id="file"/>
+                            <small id="fileHelp" class="form-text text-muted">File size < 15mb</small>
+                        </form>
+                        <iframe name='hiddenFrame'  style='display:none'></iframe>
+                    </div>
+
+                    <button type="submit" form="songAddForm" class="btn btn-secondary" data-ng-disabled="songAddForm.$invalid" id="upload" name="upload">Create</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="float-right">
+        <a data-ui-sref="home" class="btn btn-secondary" role="button">Back</a>
+    </div>
+</div>
+
+

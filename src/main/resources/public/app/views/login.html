@@ -1,0 +1,27 @@
+<div class="col-lg-4 login-register padd">
+	<div class="card">
+		<div class="card-header">Login</div>
+		<div class="card-block">
+			<div class="col-md-12">
+
+
+				<form data-ng-submit="login()">
+					<div class="form-group">
+						<label for="username">Username:</label>
+						<input type="txt" class="form-control" data-ng-model="username" id="username">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Password:</label> <input type="password"
+							class="form-control" id="pwd" data-ng-model="password">
+					</div>
+					<button type="submit" class="btn btn-secondary">Login</button>
+					<button class="btn btn-secondary" data-ui-sref="register">Register</button>
+
+					<div class="alert alert-info margin-top-5" data-ng-show="message">{{message}}</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+</div>
