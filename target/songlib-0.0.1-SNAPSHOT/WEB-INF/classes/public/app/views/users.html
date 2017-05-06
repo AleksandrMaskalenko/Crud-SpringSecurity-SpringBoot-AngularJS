@@ -1,0 +1,79 @@
+<div class="row padd">
+	<div class="col-sm-6 ">
+		<div class="card">
+			<div class="card-header">User</div>
+			<div class="card-block">
+				<div class="col-md-12">
+					<form data-ng-submit="submit()" name="userForm" novalidate>
+
+						<div class="form-group" data-ng-class="{ 'has-error': userForm.name.$invalid && userForm.name.$dirty }">
+							<label for="name">Name:</label>
+							<input type="text" required class="form-control" data-ng-model="user.name" id="name" name="name">
+						</div>
+
+						<div class="form-group" data-ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty }">
+							<label for="username">Username:</label>
+							<input type="text" required class="form-control" data-ng-model="user.username" id="username" name="username">
+						</div>
+
+						<div class="form-group" data-ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty }">
+							<label for="role">Role:</label>
+							<select required class="form-control" data-ng-model="user.role" id="role" name="role">
+								<option value="ADMIN">Administrator</option>
+								<option value="USER">User</option>
+							</select>
+						</div>
+
+						<div class="form-group" data-ng-class="{ 'has-error': userForm.password.$invalid && userForm.password.$dirty }">
+							<label for="pwd">Password:</label>
+							<input type="password" required class="form-control" id="pwd" data-ng-model="user.password" name="password">
+						</div>
+						<button type="submit" class="btn btn-secondary" data-ng-disabled="userForm.$invalid">{{buttonText}}</button>
+
+						<div class="alert alert-info margin-top-5" data-ng-show="message">{{message}}</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-header">
+				Users
+
+			</div>
+			<div class="card-block">
+
+				<div class="alert alert-info margin-top-5" data-ng-show="deleteMessage">{{deleteMessage}}</div>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Username</th>
+							<th>Role</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="user in users">
+							<td>{{$index+1}}</td>
+							<td>{{user.name}}</td>
+							<td>{{user.username}}</td>
+							<td>{{user.role}}</td>
+							<td><button type="button" class="btn btn-warning btn-sm"
+										data-ng-click="initEdit(user)">edit
+								</button></td>
+							<td>
+								<button type="button" class="btn btn-danger btn-sm"
+										data-ng-click="deleteUser(user)">delete
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

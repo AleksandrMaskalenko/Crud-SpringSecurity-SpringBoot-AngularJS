@@ -4,6 +4,7 @@ import com.springboot.songlibrary.model.Content;
 import com.springboot.songlibrary.service.ContentService;
 import com.springboot.songlibrary.service.SongService;
 import com.springboot.songlibrary.model.Song;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,8 @@ import java.util.List;
 
 @RestController
 public class SongController {
+
+    private final static Logger logger = Logger.getLogger(SongController.class);
 
     private byte[] bytes;
 
@@ -44,6 +47,7 @@ public class SongController {
 
         songService.addSong(song);
 
+        logger.info("Song saved successfully");
     }
 
     @RequestMapping(value = "/song/update", method = RequestMethod.POST)
@@ -56,7 +60,12 @@ public class SongController {
     public ResponseEntity deleteSong(@PathVariable int id) {
         try {
             songService.deleteSong(id);
+
+            logger.info("Song id - " + id + ", deleted successfully");
+
         }catch (Exception e) {
+            logger.error("Error delete song.  Message: " + e.getMessage());
+
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(HttpStatus.OK);
@@ -84,6 +93,7 @@ public class SongController {
     @PostMapping("/upload")   //from html
     public void singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         bytes = file.getBytes();
+        logger.info("Upload file and get bytes");
 
     }
 
@@ -97,10 +107,15 @@ public class SongController {
         try {
             songService.addSongPlaylist(id);
 
+
         } catch (Exception e) {
+
+            logger.error("Song don't added to playlist.  Message: " + e.getMessage());
 
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+
+        logger.error("Song added successfully");
 
         return new ResponseEntity(HttpStatus.OK);
     }

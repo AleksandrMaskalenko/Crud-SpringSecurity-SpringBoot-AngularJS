@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: songlibrary-spring-boot-security-angularjs
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: aleksandrsmaskalenko
+Implementation-Vendor-Id: com.springboot.songlibrary
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_121
+Main-Class: ${start-class}
+

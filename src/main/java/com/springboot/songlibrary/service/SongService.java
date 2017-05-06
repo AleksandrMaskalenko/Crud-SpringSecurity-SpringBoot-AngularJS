@@ -4,9 +4,9 @@ import com.springboot.songlibrary.DAO.ContentDao;
 import com.springboot.songlibrary.DAO.PlaylistDao;
 import com.springboot.songlibrary.DAO.UserDao;
 import com.springboot.songlibrary.DAO.SongDao;
-import com.springboot.songlibrary.model.Playlist;
 import com.springboot.songlibrary.model.User;
 import com.springboot.songlibrary.model.Song;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +16,8 @@ import java.util.List;
 
 @Service
 public class SongService {
+
+    private final static Logger logger = Logger.getLogger(SongService.class);
 
     @Autowired
     private ContentDao contentDao;
@@ -33,6 +35,8 @@ public class SongService {
     private User user;
 
     public List<Song> listSong() {
+        logger.info("Load all song service method");
+
         return songDao.findAll();
     }
 
@@ -48,13 +52,18 @@ public class SongService {
         if (playlistDao.findOne(id) != null) {
 
             playlistDao.delete(id);
+
+            logger.info("Delete song from playlist service method");
         }
         Song song = songDao.findOne(id);
 
         songDao.delete(id);
 
+        logger.info("Delete song service method");
+
         if (song.getContent() != null) {
             contentDao.delete(song.getContent().getId());
+            logger.info("Delete song content");
         }
 
 
@@ -79,6 +88,8 @@ public class SongService {
         }
         songs.add(songDao.findOne(id));
 
+        logger.info("Add song  user " + user.getName() +" playlist");
+
         saveUser();
     }
 
@@ -86,6 +97,8 @@ public class SongService {
         authentication();
 
         songs.removeIf(s -> s.getId() == id);
+
+        logger.info("Delete song from user " + user.getName() +" playlist");
 
         saveUser();
     }
@@ -100,11 +113,14 @@ public class SongService {
         user = userDao.findOneByUsername(loggedUsername);
         songs = new ArrayList<>();
         songs.addAll(user.getSongList());
+
+        logger.info("Get current " + user.getName() +" playlist");
     }
 
     private void saveUser() {
         user.setSongList(songs);
         userDao.save(user);
+        logger.info("Save new " + user.getName() +" playlist");
     }
 
 }

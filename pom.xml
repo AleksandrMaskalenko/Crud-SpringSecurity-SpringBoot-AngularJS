@@ -6,7 +6,7 @@
 	<groupId>com.springboot.songlibrary</groupId>
 	<artifactId>songlib</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>songlibrary-spring-boot-security-angularjs</name>
 	<description>Simple demo with angular js and spring security </description>
@@ -54,9 +54,14 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.2</version>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
 		</dependency>
 
 		<!-- hot swapping, disable cache for template, enable live reload -->

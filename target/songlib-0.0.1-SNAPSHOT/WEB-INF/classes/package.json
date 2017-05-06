@@ -1,0 +1,21 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "gulp-inject": "4.2.0",
+    "gulp-order": "1.1.1",
+    "main-bower-files": "2.13.1"
+  },
+  "description": ""
+}

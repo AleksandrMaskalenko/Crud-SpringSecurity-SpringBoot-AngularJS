@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="songlibrari-crud-security:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="songlib-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="songlibrari-crud-security:war exploded" />
+    </root>
+  </artifact>
+</component>

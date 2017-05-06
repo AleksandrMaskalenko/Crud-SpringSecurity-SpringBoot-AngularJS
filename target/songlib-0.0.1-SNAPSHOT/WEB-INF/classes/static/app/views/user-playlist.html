@@ -1,0 +1,32 @@
+<div>
+
+    <h1 class="text-center padd">Your playlist</h1>
+
+        <table class="table" >
+            <thead class="thead-default">
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Duration</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr data-ng-repeat="song in songs">
+
+                <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
+                <td>{{song.author.name}}</td>
+                <td>{{song.duration}}</td>
+                <td>
+                    <button data-ng-click="" class="btn btn-secondary btn-sm">play</button>
+                </td>
+                <td><button data-ng-click="deleteSongFromPlaylist(song)" class="btn btn-secondary btn-sm">delete from playlist</button></td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+</div>
